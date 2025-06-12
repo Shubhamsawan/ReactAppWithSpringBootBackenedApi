@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginPage from "./Components/LoginPage";
+import RolePage from "./Pages/RolePage";
+import UserPage from "./Components/UserPage";
+import DashboardHome from "./Components/Dashboard"; // this is the welcome page
+import DashboardLayout from "./Components/DashboardLayout"; // NEW
+import { AuthProvider } from "./Components/AuthContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+
+          {/* Dashboard layout with nested routes */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<DashboardHome />} /> {/* /dashboard */}
+            <Route path="roles" element={<RolePage />} />{" "}
+            {/* /dashboard/roles */}
+            <Route path="users" element={<UserPage />} />{" "}
+            {/* /dashboard/users */}
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

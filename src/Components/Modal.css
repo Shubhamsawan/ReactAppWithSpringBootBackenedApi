@@ -1,0 +1,46 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Always visible and smaller close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: #ff4d4f;
+  border: none;
+  color: white;
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  line-height: 20px;
+  cursor: pointer;
+  text-align: center;
+  padding: 0;
+  z-index: 1001;
+}
+
+.modal-close:hover {
+  background: #d9363e;
+}
