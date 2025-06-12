@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import api from "../services/api";
-import "./UserList.css";
+import "../CSS/UserList.css";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 const UserList = ({ onEditUser, reload }) => {

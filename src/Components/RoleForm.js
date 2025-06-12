@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../services/api";
-import "./Modal.css"; // Create this for modal styles
+import "../CSS/Modal.css"; // Create this for modal styles
 
 const RoleForm = ({ selectedRole, fetchRoles, clearSelection, onClose }) => {
   const [name, setName] = useState("");
