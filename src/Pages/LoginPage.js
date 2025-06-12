@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Components/AuthContext";
 import api from "../services/api";
-import "./LoginPage.css"; // ⬅️ Import external CSS
+import "../CSS/LoginPage.css"; // ⬅️ Import external CSS
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

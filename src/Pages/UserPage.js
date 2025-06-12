@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import UserForm from "./UserForm";
-import Modal from "./Modal";
-import UserList from "./UserList"; // ✅ Import the DataTable-based component
-import "./UserList.css"; // Reuse existing styles
+import UserForm from "../Components/UserForm";
+import Modal from "../Components/Modal"; // ✅ Your actual modal component
+import "../CSS/Modal.css"; // ✅ Just loads CSS
+import UserList from "../Components/UserList";
+import "../CSS/UserList.css"; // Reuse existing styles
 
 const UserPage = () => {
   const [showForm, setShowForm] = useState(false);
