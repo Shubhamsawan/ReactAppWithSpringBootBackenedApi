@@ -1,0 +1,140 @@
+/* Container for entire datatable */
+.datatable-container {
+  padding: 20px;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  /* 👇 This makes it full width */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header area with title and add button */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Add User button */
+.add-user-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-user-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Table layout */
+.table-container,
+.table-responsive {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.user-table,
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.user-table th,
+.user-table td,
+.table th,
+.table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.user-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+/* Zebra stripes and hover effect */
+.user-table tbody tr:nth-child(even),
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.user-table tbody tr:hover,
+.table tbody tr:hover {
+  background-color: #e6f7ff;
+}
+
+/* Action buttons in table */
+.action-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 6px 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn {
+  background-color: #17a2b8;
+}
+
+.edit-btn:hover {
+  background-color: #138496;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+}
+
+.delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+/* Pagination area override if needed */
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.page-wrapper,
+.main-content,
+.content-area {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+.datatable-container {
+  overflow-x: auto;
+}
