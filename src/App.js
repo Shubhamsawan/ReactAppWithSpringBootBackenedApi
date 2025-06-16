@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage";
 import RolePage from "./Pages/RolePage";
 import UserPage from "./Pages/UserPage";
+import ConfigSettingsPage from "./Pages/ConfigSettingsPage";
+
 import DashboardHome from "./Components/Dashboard"; // this is the welcome page
 import DashboardLayout from "./Components/DashboardLayout"; // NEW
 import BrokerPage from "./Pages/BrokerPage";
@@ -21,6 +23,7 @@ function App() {
             <Route path="roles" element={<RolePage />} />{" "}
             <Route path="users" element={<UserPage />} />{" "}
             <Route path="brokers" element={<BrokerPage />} />
+            <Route path="/dashboard/config" element={<ConfigSettingsPage />} />
           </Route>
         </Routes>
       </Router>

@@ -3,12 +3,13 @@
   height: 100vh;
   background-color: #2c3e50;
   color: white;
-  padding: 20px;
+  padding: 20px 10px;
   position: fixed;
   top: 0;
   left: 0;
   transition: width 0.3s ease;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sidebar.collapsed {
@@ -35,22 +36,70 @@
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar ul li {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-.sidebar ul li a {
+/* Main menu sections like "Manage", "Masters", etc. */
+.sidebar .menu-section {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+  background-color: #34495e;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar .submenu {
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+/* Subsection headers like "User Management", "Configuration" */
+.sidebar .submenu-header {
+  font-size: 13px;
+  color: #bdc3c7;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.sidebar .submenu ul {
+  list-style: none;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.sidebar .submenu li a {
   color: #ecf0f1;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  display: block;
+  padding: 6px 0;
+  padding-left: 10px;
+  transition: background 0.2s;
 }
 
-.sidebar ul li a:hover {
-  text-decoration: underline;
+.sidebar .submenu li a:hover {
+  background-color: #3e566b;
+  border-radius: 4px;
 }
 
+/* Chevron icon animation */
+.sidebar .chevron {
+  transition: transform 0.3s ease;
+}
+
+.sidebar .chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Logout button */
 .logout-btn-sidebar {
   background-color: #e74c3c;
   color: white;
@@ -66,4 +115,34 @@
 
 .logout-btn-sidebar:hover {
   background-color: #c0392b;
+}
+
+input,
+select {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0066ff;
+  color: white;
+}
+
+.sidebar.collapsed .menu-section,
+.sidebar.collapsed .submenu-header,
+.sidebar.collapsed .submenu li a {
+  display: none;
+}
+
+.sidebar.collapsed .toggle-btn {
+  font-size: 1.2rem;
 }

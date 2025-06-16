@@ -1,47 +1,108 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+import {
+  FaUsers,
+  FaUserShield,
+  FaBriefcase,
+  FaChevronDown,
+} from "react-icons/fa";
+import { MdManageAccounts } from "react-icons/md";
+import { Link } from "react-router-dom";
 import "../CSS/Sidebar.css";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  const navigate = useNavigate();
-
-  const toggleSidebar = () => setIsOpen(!isOpen);
-
-  const handleLogout = () => {
-    localStorage.clear(); // or use context logout if available
-    navigate("/");
-  };
+  const [manageOpen, setManageOpen] = useState(true);
+  const [userMgmtOpen, setUserMgmtOpen] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
+  const [configOpen, setConfigOpen] = useState(true);
 
   return (
-    <div className={`sidebar ${isOpen ? "" : "collapsed"}`}>
-      {/* Show Logout only if sidebar is open */}
-      {isOpen && (
-        <button className="logout-btn-sidebar" onClick={handleLogout}>
-          Logout
-        </button>
-      )}
-
-      <button className="toggle-btn" onClick={toggleSidebar}>
-        {isOpen ? "< Menu" : ">"}
+    <div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
+      <button className="toggle-btn" onClick={() => setCollapsed(!collapsed)}>
+        {collapsed ? "☰" : "✖"}
       </button>
 
-      {isOpen && (
-        <>
-          <h2>Dashboard</h2>
-          <ul>
-            <li>
-              <Link to="/dashboard/roles">Roles</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/users">Users</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/brokers">Brokers</Link> {/* 👈 add this */}
-            </li>
-          </ul>
-        </>
-      )}
+      <ul className="menu">
+        <li>
+          <div
+            className="menu-section"
+            onClick={() => setManageOpen(!manageOpen)}
+          >
+            <MdManageAccounts /> {!collapsed && "Manage"}
+            <FaChevronDown className={`chevron ${manageOpen ? "open" : ""}`} />
+          </div>
+
+          {manageOpen && !collapsed && (
+            <ul className="submenu">
+              <li>
+                {/* <div className="submenu-header">Configuration</div> */}
+                <div
+                  className="submenu-header"
+                  onClick={() => setConfigOpen(!configOpen)}
+                >
+                  Configuration
+                  <FaChevronDown
+                    className={`chevron ${configOpen ? "open" : ""}`}
+                  />
+                </div>
+                {configOpen && (
+                  <ul>
+                    <li>
+                      <Link to="/dashboard/brokers">
+                        <FaBriefcase /> Broker Details
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard/config">
+                        <FaUsers /> System Configuration
+                      </Link>
+                    </li>
+                  </ul>
+                )}
+
+                {/* <ul>
+                  <li>
+                    <Link to="/dashboard/brokers">
+                      <FaBriefcase /> Broker Details
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/config">
+                      <FaUsers /> System Configuration
+                    </Link>
+                  </li>
+                </ul> */}
+              </li>
+
+              <li>
+                <div
+                  className="submenu-header"
+                  onClick={() => setUserMgmtOpen(!userMgmtOpen)}
+                >
+                  User Management
+                  <FaChevronDown
+                    className={`chevron ${userMgmtOpen ? "open" : ""}`}
+                  />
+                </div>
+                {userMgmtOpen && (
+                  <ul>
+                    <li>
+                      <Link to="/dashboard/users">
+                        <FaUsers /> Users
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard/roles">
+                        <FaUserShield /> Role
+                      </Link>
+                    </li>
+                  </ul>
+                )}
+              </li>
+            </ul>
+          )}
+        </li>
+      </ul>
     </div>
   );
 };
